@@ -10,10 +10,9 @@ public class AES {
 
     public static void main (String[] args) throws Exception {
         String Message = "Are you ENJOYING your STAY in our TOWN??";
-        System.out.println("Original Message: " + Message);
+        System.out.println("AES Original Message: " + Message);
         
         // Generate a AES Key
-        String secretKeyString = "mySecretKey1111111111111";
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(256);
 
@@ -25,11 +24,11 @@ public class AES {
 
         byte[] cipherTextArray = cipher.doFinal(Message.getBytes());
         String cipherString = Base64.getEncoder().encodeToString(cipherTextArray);
-        System.out.println("Encrypted message: " + cipherString);
+        System.out.println("AES Encrypted message: " + cipherString);
 
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         byte [] decryptedString = cipher.doFinal(Base64.getDecoder().decode(cipherString));
-        System.out.println("Decrypted Message: " + new String(decryptedString));
+        System.out.println("AES Decrypted Message: " + new String(decryptedString));
 
     }
 }
